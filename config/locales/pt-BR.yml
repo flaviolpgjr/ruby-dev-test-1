@@ -1,0 +1,37 @@
+pt-BR:
+  activerecord:
+    models:
+      directory: "Diretório"
+      file_entry: "Arquivo"
+
+    attributes:
+      directory:
+        name: "Nome"
+        parent: "Diretório pai"
+      file_entry:
+        name: "Nome"
+        directory: "Diretório"
+        content: "Conteúdo"
+
+    errors:
+      messages:
+        record_invalid: "Registro inválido: %{errors}"
+
+      models:
+        directory:
+          attributes:
+            name:
+              blank: "não pode ficar em branco"
+              taken: "já está em uso neste diretório"
+            parent:
+              self_parent: "não pode ser pai de si mesmo"
+              cycle_detected: "não pode criar um ciclo na hierarquia"
+
+        file_entry:
+          attributes:
+            name:
+              blank: "não pode ficar em branco"
+              taken: "já está em uso neste diretório"
+            directory:
+              blank: "deve ser informado"
+              required: "deve ser informado"

@@ -1,5 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require "fileutils"
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
@@ -69,4 +70,30 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
+
+   config.before(:each) do
+    ActiveStorage::Attachment.delete_all
+    ActiveStorage::Blob.delete_all
+    FileEntry.delete_all
+    Directory.delete_all
+    FileUtils.rm_rf(Rails.root.join("storage"))
+    FileUtils.rm_rf(Rails.root.join("tmp/storage"))
+    FileUtils.mkdir_p(Rails.root.join("storage"))
+    FileUtils.mkdir_p(Rails.root.join("tmp/storage"))
+  end
+
+  config.after(:suite) do
+    ActiveStorage::Attachment.delete_all
+    ActiveStorage::Blob.delete_all
+    FileEntry.delete_all
+    Directory.delete_all
+    FileUtils.rm_rf(Rails.root.join("storage"))
+    FileUtils.rm_rf(Rails.root.join("tmp/storage"))
+  end
 end
