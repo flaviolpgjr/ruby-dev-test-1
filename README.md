@@ -20,6 +20,7 @@ O foco da solução está na modelagem do domínio, consistência estrutural e p
 ## Pre-requisitos:
 
 Docker
+Docker-compose
 
 ## Visão Geral
 
@@ -42,7 +43,7 @@ A estrutura de diretórios é representada no banco de dados, enquanto o conteú
 ## Quick Start
 
 ```bash
-git clone git@github.com:SEU_USUARIO/ruby-dev-test-1.git
+git clone git@github.com:flaviolpgjr/ruby-dev-test-1.git
 cd ruby-dev-test-1
 
 docker compose up --build
