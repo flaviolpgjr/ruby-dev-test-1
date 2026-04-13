@@ -1,0 +1,42 @@
+# Git
+.git
+.gitignore
+
+# Bundler
+.bundle
+vendor/bundle
+
+# Environment
+.env*
+config/master.key
+config/credentials/*.key
+
+# Logs e temp
+log/*
+tmp/*
+!log/.keep
+!tmp/.keep
+
+# PIDs
+tmp/pids/*
+!tmp/pids/.keep
+
+# Node / assets
+node_modules
+app/assets/builds/*
+!app/assets/builds/.keep
+public/assets
+
+# Storage
+storage
+
+# Coverage
+coverage
+
+# Dev / CI
+.github
+.devcontainer
+
+# Kamal
+config/deploy*.yml
+.kamal
